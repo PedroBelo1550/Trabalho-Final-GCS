@@ -20,7 +20,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="novoMedicoModalLabel">Novo Medico</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" onclick="javascript:window.history.back(-1);return false;" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form action="#" th:action="@{/viverbem/salvar/medico}" id="formNovoMedico"  th:object="${medico}" method="POST" class="register-form" enctype="multipart/form-data">
