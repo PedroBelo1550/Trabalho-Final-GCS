@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Novo médico</title>
+    <!--    <title th:text="${aluno.nome}"></title>-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/js/toast.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"><link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="/css/buttons.css">
+</head>
+<body>
+<div id="modalNovoMedico" tabindex="-1" aria-labelledby="novoMedicoModalLabel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="novoMedicoModalLabel">Novo Medico</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="#" th:action="@{/viverbem/salvar/medico}" id="formNovoMedico"  th:object="${medico}" method="POST" class="register-form" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <input  type="hidden" id="id"  th:field="*{codigo}" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="medicoNome">Nome:</label>
+                        <input type="text"  class="form-control" id="medicoNome" th:field="*{nome}" minlength="4" maxlength="50" required placeholder="Nome"/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="medicoTel">Telefone:</label>
+                        <input type="text"  class="form-control" id="medicoTel" th:field="*{telefone}" minlength="5" maxlength="11" required placeholder="Telefone"/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="medicoEspec">Especialidade:</label>
+                        <input type="text"  class="form-control" id="medicoEspec" th:field="*{especialidade}" minlength="3" maxlength="11" required placeholder="Especialidade"/>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" onclick="javascript:window.history.back(-1);return false;" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" id="btnModalCriar" class="btn" style="background: #f2a900;color: black;">Criar médico</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
