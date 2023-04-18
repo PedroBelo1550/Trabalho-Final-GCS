@@ -19,6 +19,8 @@ public class Paciente {
 
     private String data_nascimento;
 
+    private String email;
+
     public Paciente(){}
 
     @Deprecated
@@ -69,6 +71,9 @@ public class Paciente {
         this.data_nascimento = data_nascimento;
     }
 
+    public String getEmail() {  return email;  }
+
+    public void setEmail(String email) { this.email = email;  }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
