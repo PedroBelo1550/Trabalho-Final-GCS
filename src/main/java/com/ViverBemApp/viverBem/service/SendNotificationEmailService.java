@@ -30,8 +30,17 @@ public class SendNotificationEmailService {
 
         LocalDate dataConsulta = consulta.getData();
         LocalTime horaConsulta = consulta.getHora();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-        String dataHoraConsulta = dataConsulta.format(formatter) + " às " + horaConsulta.format(formatter);
+
+
+
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String dataFormatada = dataConsulta.format(dateFormatter);
+
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+        String horaFormatada = horaConsulta.format(timeFormatter);
+
+        String dataHoraConsulta = dataFormatada+ " às " + horaFormatada;
+
 
         message.setSubject("Consulta agendada");
         message.setText("Olá " + paciente.getNome() + ", sua consulta com o médico " + consulta.getMedico().getNome() + " foi agendada para " + dataHoraConsulta + ".");
