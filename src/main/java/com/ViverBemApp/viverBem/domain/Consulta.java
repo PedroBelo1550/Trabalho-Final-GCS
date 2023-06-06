@@ -3,6 +3,8 @@ import jakarta.persistence.*;
 
 import java.util.List;
 import java.util.Objects;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 public class Consulta {
@@ -11,9 +13,8 @@ public class Consulta {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long codigo;
 
-    private String data;
-
-    private String hora;
+    private LocalDate data;
+    private LocalTime hora;
 
     @OneToOne
     @JoinColumn(name = "codigo_med", referencedColumnName = "codigo")
@@ -26,7 +27,7 @@ public class Consulta {
     public Consulta(){}
 
     @Deprecated
-    public Consulta(String data){
+    public Consulta(LocalDate data){
         this.data = data;
     }
 
@@ -38,19 +39,19 @@ public class Consulta {
         this.codigo = codigo;
     }
 
-    public String getData() {
+    public LocalDate getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(LocalDate data) {
         this.data = data;
     }
 
-    public String getHora() {
+    public LocalTime getHora() {
         return hora;
     }
 
-    public void setHora(String hora) {
+    public void setHora(LocalTime hora) {
         this.hora = hora;
     }
 
