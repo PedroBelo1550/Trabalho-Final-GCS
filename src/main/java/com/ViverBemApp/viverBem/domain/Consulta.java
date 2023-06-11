@@ -6,6 +6,9 @@ import java.util.Objects;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+/**
+ * Classe que representa uma consulta.
+ */
 @Entity
 public class Consulta {
 
@@ -24,8 +27,17 @@ public class Consulta {
     @JoinColumn(name = "codigo_pac", referencedColumnName = "codigo")
     private Paciente paciente;
 
+    /**
+     * Construtor padrão da classe Consulta.
+     */
     public Consulta(){}
 
+    /**
+     * Construtor da classe Consulta com a data da consulta.
+     *
+     * @param data A data da consulta.
+     * @deprecated Use o construtor padrão ou o método setData para definir a data da consulta.
+     */
     @Deprecated
     public Consulta(LocalDate data){
         this.data = data;

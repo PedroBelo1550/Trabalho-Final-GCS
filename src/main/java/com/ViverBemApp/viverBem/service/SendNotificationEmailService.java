@@ -1,6 +1,5 @@
 package com.ViverBemApp.viverBem.service;
 
-
 import com.ViverBemApp.viverBem.domain.Consulta;
 import com.ViverBemApp.viverBem.domain.Paciente;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,17 +11,30 @@ import javax.mail.MessagingException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-
+/**
+ * This service class is responsible for sending notification emails to patients regarding their scheduled consultations.
+ */
 @Service
 public class SendNotificationEmailService {
 
     private final JavaMailSender javaMailSender;
-
+    /**
+     * Constructs a new SendNotificationEmailService with the specified JavaMailSender.
+     *
+     * @param javaMailSender the JavaMailSender instance to be used for sending emails
+     */
     @Autowired
     public SendNotificationEmailService(JavaMailSender javaMailSender) {
         this.javaMailSender = javaMailSender;
     }
 
+    /**
+     * Sends a notification email to the specified patient regarding their scheduled consultation.
+     *
+     * @param paciente the Paciente object representing the patient
+     * @param consulta the Consulta object representing the scheduled consultation
+     * @throws MessagingException if there is an issue with sending the email
+     */
     public void sendNotificationEmail(Paciente paciente, Consulta consulta) throws MessagingException {
 
         SimpleMailMessage message = new SimpleMailMessage();

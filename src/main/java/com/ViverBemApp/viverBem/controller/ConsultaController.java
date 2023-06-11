@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.*;
-
+/**
+ * Controlador responsável por manipular as requisições relacionadas às consultas.
+ */
 @Controller
 public class ConsultaController {
 
@@ -22,12 +24,26 @@ public class ConsultaController {
     private MedicoRepository medicoRepo;
     private PacienteRepository pacienteRepo;
 
+    /**
+     * Construtor da classe ConsultaController.
+     *
+     * @param consultaRepo  Repositório de consultas.
+     * @param medicoRepo    Repositório de médicos.
+     * @param pacienteRepo  Repositório de pacientes.
+     */
     public ConsultaController(ConsultaRepository consultaRepo, MedicoRepository medicoRepo, PacienteRepository pacienteRepo){
         this.consultaRepo = consultaRepo;
         this.medicoRepo =  medicoRepo;
         this.pacienteRepo = pacienteRepo;
     }
 
+    /**
+     * Mapeamento para exibir a página de cadastro de nova consulta.
+     *
+     * @param model     O modelo de dados utilizado pela view.
+     * @param consulta  O objeto Consulta para preenchimento dos dados.
+     * @return A página de cadastro de consulta ou redirecionamento para a página inicial com parâmetros adicionais.
+     */
     @GetMapping("/viverbem/novo/consulta")
     public String novaConsulta(Model model, @ModelAttribute("consulta") Consulta consulta) {
 
@@ -61,6 +77,13 @@ public class ConsultaController {
         }
     }
 
+    /**
+     * Mapeamento para cancelar uma consulta.
+     *
+     * @param codigo  O código da consulta a ser cancelada.
+     * @return Redirecionamento para a página inicial com parâmetros adicionais.
+     * @throws IllegalArgumentException Se o código da consulta for inválido.
+     */
     @GetMapping("/viverbem/consulta/cancelar/{codigo}")
     public String excluirParceiro(@PathVariable("codigo") long codigo){
         Optional<Consulta> consultaOpt = consultaRepo.findById(codigo);
@@ -72,12 +95,25 @@ public class ConsultaController {
         return "redirect:/index?consultasucess=false";
     }
 
+    /**
+     * Mapeamento para exibir a página de cancelamento de consulta.
+     *
+     * @param model     O modelo de dados utilizado pela view.
+     * @param consulta  O objeto Consulta para preenchimento dos dados.
+     * @return A página de cancelamento de consulta.
+     */
     @GetMapping("/viverbem/cancelar/consulta")
     public String cancelarConsulta(Model model, @ModelAttribute("consulta") Consulta consulta) {
         model.addAttribute("listaConsultas", consultaRepo.findAll());
             return "cancelarConsulta";
     }
 
+    /**
+     * Mapeamento para salvar uma consulta.
+     *
+     * @param consulta  O objeto Consulta a ser salvo.
+     * @return Redirecionamento para a página inicial com parâmetros adicionais.
+     */
     @PostMapping("/viverbem/salvar/consulta")
     public String salvarMedico(@ModelAttribute("consulta") Consulta consulta){
         consultaRepo.save(consulta);

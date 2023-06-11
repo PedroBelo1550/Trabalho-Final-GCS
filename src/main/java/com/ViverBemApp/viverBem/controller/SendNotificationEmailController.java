@@ -16,16 +16,31 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.mail.MessagingException;
 
+/**
+ * Controlador responsável por manipular as requisições relacionadas ao envio de notificação por e-mail.
+ */
 @Controller
 public class SendNotificationEmailController {
 
     private final SendNotificationEmailService sendNotificationEmailService;
 
+    /**
+     * Construtor da classe SendNotificationEmailController.
+     *
+     * @param sendNotificationEmailService O serviço de envio de notificação por e-mail.
+     */
     @Autowired
     public SendNotificationEmailController(SendNotificationEmailService sendNotificationEmailService) {
         this.sendNotificationEmailService = sendNotificationEmailService;
     }
 
+    /**
+     * Mapeamento para enviar uma notificação por e-mail.
+     *
+     * @param consultaR A consulta relacionada à notificação.
+     * @return Uma resposta HTTP com o status e uma mensagem de sucesso.
+     * @throws MessagingException Se ocorrer um erro durante o envio do e-mail.
+     */
     @PostMapping("/send-email")
     public ResponseEntity<String> sendNotificationEmail(@RequestBody Consulta consultaR) throws MessagingException {
         Paciente paciente = consultaR.getPaciente();

@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Classe que representa um paciente.
+ */
 @Entity
 public class Paciente {
 
@@ -21,8 +24,20 @@ public class Paciente {
 
     private String email;
 
+    /**
+     * Construtor padrão da classe Paciente.
+     */
     public Paciente(){}
 
+    /**
+     * Construtor da classe Paciente com os detalhes do paciente.
+     *
+     * @param nome            O nome do paciente.
+     * @param endereco        O endereço do paciente.
+     * @param telefone        O número de telefone do paciente.
+     * @param data_nascimento A data de nascimento do paciente.
+     * @deprecated Use o construtor padrão ou os métodos setter para definir os detalhes do paciente.
+     */
     @Deprecated
     public Paciente(String nome, String endereco, String telefone, String data_nascimento){
        this.nome = nome;
