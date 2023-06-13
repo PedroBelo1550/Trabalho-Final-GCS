@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Classe que representa um médico.
+ */
 @Entity
 public class Medico {
 
@@ -17,8 +20,17 @@ public class Medico {
 
     private String especialidade;
 
+    /**
+     * Construtor padrão da classe Medico.
+     */
     public Medico(){}
 
+    /**
+     * Construtor da classe Medico com o nome do médico.
+     *
+     * @param nome O nome do médico.
+     * @deprecated Use o construtor padrão ou o método setNome para definir o nome do médico.
+     */
     @Deprecated
     public Medico(String nome){
         this.nome = nome;

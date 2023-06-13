@@ -5,9 +5,13 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
-
+/**
+ * Esta classe representa uma aplicação Java para envio de e-mails usando a API JavaMail.
+ */
 public class JavaMailApp {
-
+    /**
+     * Método para enviar um e-mail.
+     */
     public void sendEmail() {
         Properties props = new Properties();
         /** Parâmetros de conexão com servidor Gmail */
