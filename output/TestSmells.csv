@@ -1,2 +1,0 @@
-Project Name,Package Name,Type Name,Method Name,Test Smell,Cause of the Smell
-.,com.ViverBemApp.viverBem,SendNotificationEmailTests,sendNotificationEmailEndpointExistsTest,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
